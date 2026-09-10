@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/jflat-landingopen11.html" }
+  ]
+}
