@@ -38,7 +38,7 @@
     color:transparent; -webkit-text-fill-color:transparent;
   }
   *{ box-sizing:border-box; margin:0; padding:0; }
-  html{ scroll-behavior:smooth; font-size:62.5%; }
+  html{ scroll-behavior:smooth; font-size:62.5%; overflow-x:hidden; max-width:100vw; }
   body{
     font-size:1.6rem;
     background:
@@ -59,15 +59,16 @@
   a{ color:inherit; }
 
   nav{
-    position:fixed; top:54px; left:0; width:100%; z-index:90;
+    position:fixed; top:54px; left:0; width:100%; max-width:100vw; z-index:90;
     display:flex; justify-content:space-between; align-items:center;
     padding:22px 6vw; backdrop-filter:blur(10px);
     background:rgba(8,6,10,0.78);
     border-bottom:1px solid rgba(242,242,242,0.08);
   }
   .featured-strip{
-    position:fixed; top:0; left:0; width:100%; z-index:95;
+    position:fixed; top:0; left:0; width:100%; max-width:100vw; z-index:95;
     overflow:hidden;
+    contain:paint;
     padding:17px 0;
     background:rgba(8,6,10,0.6); backdrop-filter:blur(6px);
     border-bottom:1px solid rgba(242,242,242,0.08);
@@ -141,6 +142,9 @@
   .hero .amp{ background:linear-gradient(90deg, var(--rust), var(--amber)); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; }
   .hero-banner{ padding:217px 0 0; margin:0; position:relative; }
   .hero-banner-img{ display:block; width:100%; height:auto; aspect-ratio:1925/817; object-fit:cover; }
+  @media(max-width:679.98px){
+    .hero-banner-img{ filter:brightness(1.22) contrast(1.05) saturate(1.1); }
+  }
   .hero-banner::after{
     content:'';
     position:absolute; left:0; right:0; bottom:0;
