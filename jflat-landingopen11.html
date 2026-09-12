@@ -188,7 +188,8 @@
   .credit-art{ width:50%; max-width:525px; height:auto; display:block; margin:0 auto; filter:drop-shadow(0 12px 30px rgba(0,0,0,0.5)); }
   @media(min-width:700px){
     .credit-block-grid{ flex-direction:row; align-items:flex-start; gap:40px; }
-    .credit-block-text{ flex:1 1 auto; min-width:0; }
+    .credit-block-text{ flex:1 1 auto; min-width:0; max-width:720px; }
+    .credit-block-text p{ max-width:690px; }
     .credit-art{ flex:0 0 auto; width:23%; max-width:475px; margin:0; }
   }
   .credit-title{ font-family:'Anton', sans-serif; font-size:clamp(2.8rem, 6vw, 4.4rem); margin:12px 0 14px; text-transform:none; background:linear-gradient(90deg, var(--rust), var(--amber)); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; display:inline-block; }
