@@ -219,6 +219,7 @@
   .cert-audio{ margin-top:8px; width:100%; max-width:360px; height:34px; }
 
   .about-section{ padding:100px 0; }
+  @media(max-width:679.98px){ .about-section{ padding-left:24px; padding-right:24px; } }
   .about-block-grid{ display:flex; flex-direction:column; gap:32px; align-items:center; }
   .about-art{ width:100%; max-width:680px; height:auto; aspect-ratio:3/4; object-fit:cover; object-position:center 45%; border-radius:16px; display:block; box-shadow:0 20px 50px rgba(0,0,0,0.4); }
   @media(min-width:800px){
@@ -413,6 +414,11 @@
       drop-shadow(10px 16px 22px rgba(0,0,0,0.55))
       drop-shadow(0 0 30px rgba(140,190,255,0.4))
       saturate(1.4) contrast(1.2) brightness(1.05);
+  }
+  @media(max-width:679.98px){
+    .contact-logo-img-wrap{ width:220px; height:220px; }
+    .contact-record{ width:220px; height:220px; }
+    .contact-logo-img{ width:117px; height:146px; }
   }
   .contact-logo-text{ display:flex; align-items:baseline; gap:26px; font-family:'Space Mono', monospace; font-weight:700; letter-spacing:2px; }
   .neon-badge-wrap{ display:flex; justify-content:center; margin-bottom:16px; }
