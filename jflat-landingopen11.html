@@ -142,10 +142,13 @@
   /* HERO */
   .hero .amp{ background:linear-gradient(90deg, var(--rust), var(--amber)); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; }
   .hero-banner{ padding:217px 0 0; margin:0; position:relative; }
-  .hero-banner-img{ display:block; width:100%; height:auto; aspect-ratio:2048/768; object-fit:cover; object-position:100% center; }
+  .hero-banner-img{ width:100%; height:auto; aspect-ratio:2048/768; object-fit:cover; object-position:100% center; }
+  .hero-banner-img-desktop{ display:block; }
+  .hero-banner-img-mobile{ display:none; }
   @media(max-width:679.98px){
     .hero-banner{ padding-top:181px; }
-    .hero-banner-img{ filter:brightness(2.2) contrast(1.05) saturate(1.15); }
+    .hero-banner-img-desktop{ display:none; }
+    .hero-banner-img-mobile{ display:block; }
     .hero-banner::after{ height:55px; }
   }
   .hero-banner::after{
@@ -732,7 +735,8 @@
 </script>
 
 <section id="hero" class="hero-banner">
-  <img class="hero-banner-img" src="assets/hero.jpg" alt="J-Flat Sound Labs studio banner" fetchpriority="high" width="2048" height="768">
+  <img class="hero-banner-img hero-banner-img-desktop" src="assets/hero.jpg" alt="J-Flat Sound Labs studio banner" fetchpriority="high" width="2048" height="768">
+  <img class="hero-banner-img hero-banner-img-mobile" src="assets/hero-mobile.jpg" alt="J-Flat Sound Labs studio banner" width="2048" height="768">
 </section>
 
 <section id="about" class="bio">
