@@ -145,6 +145,7 @@
   .hero-banner-img{ display:block; width:100%; height:auto; aspect-ratio:2048/768; object-fit:cover; object-position:100% center; }
   @media(max-width:679.98px){
     .hero-banner{ padding-top:181px; }
+    .hero-banner-img{ filter:brightness(2.2) contrast(1.05) saturate(1.15); }
     .hero-banner::after{ height:55px; }
   }
   .hero-banner::after{
@@ -731,10 +732,7 @@
 </script>
 
 <section id="hero" class="hero-banner">
-  <picture>
-    <source media="(max-width:679.98px)" srcset="assets/hero-mobile.jpg">
-    <img class="hero-banner-img" src="assets/hero.jpg" alt="J-Flat Sound Labs studio banner" fetchpriority="high" width="2048" height="768">
-  </picture>
+  <img class="hero-banner-img" src="assets/hero.jpg" alt="J-Flat Sound Labs studio banner" fetchpriority="high" width="2048" height="768">
 </section>
 
 <section id="about" class="bio">
