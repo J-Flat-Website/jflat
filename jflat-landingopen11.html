@@ -683,10 +683,29 @@
 </style>
 <script>
   (function(){
+    var FADE_MS = 700;
     function fmt(t){
       if (!isFinite(t)) t = 0;
       var m = Math.floor(t/60), s = Math.floor(t%60);
       return m + ':' + (s < 10 ? '0' : '') + s;
+    }
+    function fadeVolume(audio, from, to, duration, done){
+      var token = {};
+      audio._fadeToken = token;
+      audio.volume = from;
+      var start = null;
+      function step(ts){
+        if (audio._fadeToken !== token) return;
+        if (start === null) start = ts;
+        var progress = duration > 0 ? Math.min((ts - start) / duration, 1) : 1;
+        audio.volume = from + (to - from) * progress;
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else if (done) {
+          done();
+        }
+      }
+      requestAnimationFrame(step);
     }
     function initAxp(){
     document.querySelectorAll('.axp').forEach(function(wrap){
@@ -696,6 +715,7 @@
       var curEl = wrap.querySelector('.axp-cur');
       var durEl = wrap.querySelector('.axp-dur');
       var seeking = false;
+      var endFadeStarted = false;
 
       function paintSeek(pct){
         seek.style.background = 'linear-gradient(to right, #CF743F 0%, #CF743F ' + pct + '%, rgba(255,255,255,.18) ' + pct + '%, rgba(255,255,255,.18) 100%)';
@@ -711,13 +731,40 @@
         curEl.textContent = fmt(audio.currentTime);
         var pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
         paintSeek(pct);
+        var remaining = audio.duration - audio.currentTime;
+        if (!audio.paused && audio.duration && remaining <= FADE_MS / 1000 && !endFadeStarted) {
+          endFadeStarted = true;
+          fadeVolume(audio, audio.volume, 0, Math.max(remaining * 1000, 50));
+        }
       });
       audio.addEventListener('play', function(){ wrap.classList.add('is-playing'); });
       audio.addEventListener('pause', function(){ wrap.classList.remove('is-playing'); });
-      audio.addEventListener('ended', function(){ wrap.classList.remove('is-playing'); });
+      audio.addEventListener('ended', function(){
+        wrap.classList.remove('is-playing');
+        endFadeStarted = false;
+        audio.volume = 1;
+      });
+      audio.addEventListener('seeked', function(){
+        var remaining = audio.duration - audio.currentTime;
+        if (!(remaining <= FADE_MS / 1000)) {
+          endFadeStarted = false;
+          audio._fadeToken = {};
+          audio.volume = 1;
+        }
+      });
 
       playBtn.addEventListener('click', function(){
-        if (audio.paused) audio.play(); else audio.pause();
+        if (audio.paused) {
+          endFadeStarted = false;
+          audio.volume = 0;
+          audio.play();
+          fadeVolume(audio, 0, 1, FADE_MS);
+        } else {
+          fadeVolume(audio, audio.volume, 0, FADE_MS, function(){
+            audio.pause();
+            audio.volume = 1;
+          });
+        }
       });
       seek.addEventListener('input', function(){
         seeking = true;
