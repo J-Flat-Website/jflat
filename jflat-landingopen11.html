@@ -365,12 +365,11 @@
     padding:16px 18px; transition:border-color 0.2s, background 0.2s;
   }
   .mix-card:hover{ border-color:var(--rust); }
-  .bandcamp-card{ padding:8px; width:660px; max-width:100%; }
+  .bandcamp-card{ padding:8px; width:660px; max-width:100%; min-width:0; }
   .bandcamp-card:hover{ border-color:var(--line); }
   .bandcamp-grid{ display:flex; flex-direction:column; gap:14px; }
   @media(min-width:900px){
-    .bandcamp-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:start; max-width:1380px; margin:0 auto; }
-    .bandcamp-grid > .bandcamp-card:nth-child(2n){ justify-self:end; }
+    .bandcamp-grid{ display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:14px; align-items:start; }
   }
   .play-btn{
     width:44px; height:44px; border-radius:50%; flex-shrink:0;
