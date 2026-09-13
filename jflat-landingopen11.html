@@ -544,12 +544,16 @@
   .loader-logo-text{ display:flex; align-items:baseline; gap:12px; font-family:'Space Mono', monospace; font-weight:700; letter-spacing:2px; margin-bottom:32px; }
   .loader-logo-main{
     font-family:'Anton', sans-serif; font-size:clamp(2.4rem, 9vw, 4.2rem); letter-spacing:0.03em;
-    color:#D9793D;
+    background:linear-gradient(90deg, #CF743F, #F5CE63);
+    -webkit-background-clip:text; background-clip:text;
+    color:transparent; -webkit-text-fill-color:transparent;
     display:inline-block; filter:drop-shadow(0 0 14px rgba(255,210,120,0.45));
   }
   .loader-logo-sub{
     font-weight:700; font-family:'Anton', sans-serif; font-size:clamp(2.4rem, 9vw, 4.2rem); letter-spacing:0.03em;
-    color:#F0C468;
+    background:linear-gradient(90deg, #CF743F, #F5CE63);
+    -webkit-background-clip:text; background-clip:text;
+    color:transparent; -webkit-text-fill-color:transparent;
     display:inline-block; filter:drop-shadow(0 0 14px rgba(255,210,120,0.45));
   }
 
