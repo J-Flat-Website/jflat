@@ -145,18 +145,18 @@
   .hero-banner-img{ width:100%; height:auto; aspect-ratio:2048/768; object-fit:cover; object-position:100% center; -webkit-transform:translateZ(0); transform:translateZ(0); will-change:transform; backface-visibility:hidden; -webkit-backface-visibility:hidden; }
   .hero-banner-img-desktop{ display:block; }
   .hero-banner-img-mobile{ display:none; }
-  @media(max-width:679.98px){
-    .hero-banner{ padding-top:181px; }
-    .hero-banner-img-desktop{ display:none; }
-    .hero-banner-img-mobile{ display:block; }
-    .hero-banner::after{ height:55px; }
-  }
   .hero-banner::after{
     content:'';
     position:absolute; left:0; right:0; bottom:0;
     height:220px;
     background:linear-gradient(180deg, rgba(15,30,48,0) 0%, #0F1E30 100%);
     pointer-events:none;
+  }
+  @media(max-width:679.98px){
+    .hero-banner{ padding-top:181px; }
+    .hero-banner-img-desktop{ display:none; }
+    .hero-banner-img-mobile{ display:block; }
+    .hero-banner::after{ height:55px; }
   }
 
   /* BIO */
