@@ -522,6 +522,9 @@
       #0F1E30;
     display:flex; align-items:center; justify-content:center;
     transition:opacity 0.9s ease;
+    -webkit-transform:translateZ(0); transform:translateZ(0);
+    will-change:opacity;
+    backface-visibility:hidden; -webkit-backface-visibility:hidden;
   }
   #loader.fade-out{ opacity:0; pointer-events:none; }
   body.loading{ overflow:hidden; }
@@ -742,7 +745,6 @@
 <section id="about" class="bio">
   <div class="inner bio-grid">
     <div class="bio-text bio-text-top">
-      <div class="label">About</div>
       <h1 class="bio-name">J - FLAT</h1>
       <p style="font-size:2.2rem; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:20px; background:linear-gradient(90deg, var(--rust), var(--amber)); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; display:block; width:fit-content;">Sound Engineer Based Out Of Los Angeles</p>
     </div>
