@@ -136,7 +136,7 @@
   }
 
   section{ padding:120px 3vw; position:relative; }
-  @media(max-width:679.98px){ section{ padding-left:24px; padding-right:24px; } }
+  @media(max-width:679.98px){ section{ padding-left:24px; padding-right:24px; padding-top:50px; padding-bottom:50px; } }
   .inner{ max-width:1800px; margin:0 auto; }
 
   /* HERO */
@@ -165,8 +165,10 @@
     padding-top:90px;
     padding-bottom:70px;
   }
-  @media(max-width:679.98px){ .bio{ padding-top:30px; } }
+  @media(max-width:679.98px){ .bio{ padding-top:30px; padding-bottom:32px; } }
   .label{ font-family:'Space Mono', monospace; font-size:2.6rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:18px; background:linear-gradient(90deg, var(--rust), var(--amber)); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; display:block; width:fit-content; }
+  .label-gap{ margin-top:170px; }
+  @media(max-width:679.98px){ .label-gap{ margin-top:70px; } }
   .bio-name{
     font-family:'Anton', sans-serif; font-size:clamp(2.8rem, 6vw, 4.4rem);
     background:linear-gradient(90deg, #CF743F, #F5CE63);
@@ -228,7 +230,7 @@
   .cert-audio{ margin-top:8px; width:100%; max-width:360px; height:34px; accent-color:var(--rust); }
 
   .about-section{ padding:100px 0; }
-  @media(max-width:679.98px){ .about-section{ padding-left:24px; padding-right:24px; } }
+  @media(max-width:679.98px){ .about-section{ padding-left:24px; padding-right:24px; padding-top:45px; padding-bottom:45px; } }
   .about-block-grid{ display:flex; flex-direction:column; gap:32px; align-items:center; }
   .about-art{ width:100%; max-width:680px; height:auto; aspect-ratio:3/4; object-fit:cover; object-position:center 45%; border-radius:16px; display:block; box-shadow:0 20px 50px rgba(0,0,0,0.4); }
   @media(min-width:800px){
@@ -766,7 +768,7 @@
 
 
   <div class="inner">
-    <div class="label" style="margin-top:170px;">Why Work With J-Flat</div>
+    <div class="label label-gap">Why Work With J-Flat</div>
     <div class="why-grid">
       <div class="why-card">
         <h3>Fresh, Objective Perspective</h3>
@@ -782,7 +784,7 @@
       </div>
     </div>
 
-    <div class="label" style="margin-top:170px;">The Process</div>
+    <div class="label label-gap">The Process</div>
     <h2 style="margin-bottom:20px;">What's included in your mix.</h2>
     <p class="process-intro">To give your music the competitive edge it needs for modern streaming, every project runs through a rigorous, multi-step mixing process:</p>
     <div class="process-grid">
