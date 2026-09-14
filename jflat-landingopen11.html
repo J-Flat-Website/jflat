@@ -372,12 +372,6 @@
     padding:16px 18px; transition:border-color 0.2s, background 0.2s;
   }
   .mix-card:hover{ border-color:var(--rust); }
-  .bandcamp-card{ padding:8px; width:660px; max-width:100%; min-width:0; }
-  .bandcamp-card:hover{ border-color:var(--line); }
-  .bandcamp-grid{ display:flex; flex-direction:column; gap:14px; }
-  @media(min-width:900px){
-    .bandcamp-grid{ display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:14px; align-items:start; }
-  }
   .play-btn{
     width:44px; height:44px; border-radius:50%; flex-shrink:0;
     border:none; cursor:pointer; display:flex; align-items:center; justify-content:center;
@@ -893,41 +887,75 @@
     <div class="label">Mixes</div>
     <h2 style="margin-bottom:8px;">Listen</h2>
     <div class="mix-grid">
-      <div class="bandcamp-grid">
-      <div class="mix-card bandcamp-card">
-        <iframe style="border:0; width:100%; height:120px;" src="https://bandcamp.com/EmbeddedPlayer/track=535821560/size=large/bgcol=141414/linkcol=f2a93b/tracklist=false/artwork=small/transparent=true/" seamless title="Fadeaway Shots by Black Silver x HardMoney">
-          <a href="https://blacksilver.bandcamp.com/track/fadeaway-shots">Fadeaway Shots by Black Silver x HardMoney</a>
-        </iframe>
-      </div>
-      <div class="mix-card bandcamp-card">
-        <iframe style="border:0; width:100%; height:120px;" src="https://bandcamp.com/EmbeddedPlayer/track=4192763447/size=large/bgcol=141414/linkcol=f2a93b/tracklist=false/artwork=small/transparent=true/" seamless title="W.O.L.F. (Win Or Learn From it) by Black Silver x HardMoney">
-          <a href="https://blacksilver.bandcamp.com/track/w-o-l-f-win-or-learn-from-it">W.O.L.F. (Win Or Learn From it) by Black Silver x HardMoney</a>
-        </iframe>
-      </div>
-      <div class="mix-card bandcamp-card">
-        <iframe style="border:0; width:100%; height:120px;" src="https://bandcamp.com/EmbeddedPlayer/track=3562967622/size=large/bgcol=141414/linkcol=f2a93b/tracklist=false/artwork=small/transparent=true/" seamless title="All Gas by Black Silver x HardMoney">
-          <a href="https://blacksilver.bandcamp.com/track/all-gas">All Gas by Black Silver x HardMoney</a>
-        </iframe>
-      </div>
-      <div class="mix-card bandcamp-card">
-        <iframe style="border:0; width:100%; height:120px;" src="https://bandcamp.com/EmbeddedPlayer/track=3589952242/size=large/bgcol=141414/linkcol=f2a93b/tracklist=false/artwork=small/transparent=true/" seamless title="In A Nutshell by Black Silver x HardMoney">
-          <a href="https://blacksilver.bandcamp.com/track/in-a-nutshell">In A Nutshell by Black Silver x HardMoney</a>
-        </iframe>
-      </div>
-      <div class="mix-card bandcamp-card">
-        <iframe style="border:0; width:100%; height:120px;" src="https://bandcamp.com/EmbeddedPlayer/track=2328412743/size=large/bgcol=141414/linkcol=f2a93b/tracklist=false/artwork=small/transparent=true/" seamless title="Fire And Ice by Black Silver x HardMoney">
-          <a href="https://blacksilver.bandcamp.com/track/fire-and-ice">Fire And Ice by Black Silver x HardMoney</a>
-        </iframe>
-      </div>
-      <div class="mix-card bandcamp-card">
-        <iframe style="border:0; width:100%; height:120px;" src="https://bandcamp.com/EmbeddedPlayer/track=1590242044/size=large/bgcol=141414/linkcol=f2a93b/tracklist=false/artwork=small/transparent=true/" seamless title="Void Where Inhibited by Black Silver x HardMoney">
-          <a href="https://blacksilver.bandcamp.com/track/void-where-inhibited">Void Where Inhibited by Black Silver x HardMoney</a>
-        </iframe>
-      </div>
+      <div class="mix-card">
+        <div class="mix-info">
+          <b>Fadeaway Shots</b>
+          <div class="axp">
+            <button class="axp-play" type="button" aria-label="Play"></button>
+            <input type="range" class="axp-seek" min="0" max="100" value="0" step="0.1" aria-label="Seek">
+            <span class="axp-time"><span class="axp-cur">0:00</span> / <span class="axp-dur">0:00</span></span>
+            <audio class="axp-audio" preload="metadata"><source src="assets/mix-fadeaway-shots.m4a" type="audio/mp4"></audio>
+          </div>
+        </div>
       </div>
       <div class="mix-card">
         <div class="mix-info">
-          <b>Stay With Me</b>
+          <b>W.O.L.F. (Win Or Learn From It)</b>
+          <div class="axp">
+            <button class="axp-play" type="button" aria-label="Play"></button>
+            <input type="range" class="axp-seek" min="0" max="100" value="0" step="0.1" aria-label="Seek">
+            <span class="axp-time"><span class="axp-cur">0:00</span> / <span class="axp-dur">0:00</span></span>
+            <audio class="axp-audio" preload="metadata"><source src="assets/mix-wolf.m4a" type="audio/mp4"></audio>
+          </div>
+        </div>
+      </div>
+      <div class="mix-card">
+        <div class="mix-info">
+          <b>All Gas</b>
+          <div class="axp">
+            <button class="axp-play" type="button" aria-label="Play"></button>
+            <input type="range" class="axp-seek" min="0" max="100" value="0" step="0.1" aria-label="Seek">
+            <span class="axp-time"><span class="axp-cur">0:00</span> / <span class="axp-dur">0:00</span></span>
+            <audio class="axp-audio" preload="metadata"><source src="assets/mix-all-gas.m4a" type="audio/mp4"></audio>
+          </div>
+        </div>
+      </div>
+      <div class="mix-card">
+        <div class="mix-info">
+          <b>In A Nutshell</b>
+          <div class="axp">
+            <button class="axp-play" type="button" aria-label="Play"></button>
+            <input type="range" class="axp-seek" min="0" max="100" value="0" step="0.1" aria-label="Seek">
+            <span class="axp-time"><span class="axp-cur">0:00</span> / <span class="axp-dur">0:00</span></span>
+            <audio class="axp-audio" preload="metadata"><source src="assets/mix-in-a-nutshell.m4a" type="audio/mp4"></audio>
+          </div>
+        </div>
+      </div>
+      <div class="mix-card">
+        <div class="mix-info">
+          <b>Fire And Ice</b>
+          <div class="axp">
+            <button class="axp-play" type="button" aria-label="Play"></button>
+            <input type="range" class="axp-seek" min="0" max="100" value="0" step="0.1" aria-label="Seek">
+            <span class="axp-time"><span class="axp-cur">0:00</span> / <span class="axp-dur">0:00</span></span>
+            <audio class="axp-audio" preload="metadata"><source src="assets/mix-fire-and-ice.m4a" type="audio/mp4"></audio>
+          </div>
+        </div>
+      </div>
+      <div class="mix-card">
+        <div class="mix-info">
+          <b>Void Where Inhibited</b>
+          <div class="axp">
+            <button class="axp-play" type="button" aria-label="Play"></button>
+            <input type="range" class="axp-seek" min="0" max="100" value="0" step="0.1" aria-label="Seek">
+            <span class="axp-time"><span class="axp-cur">0:00</span> / <span class="axp-dur">0:00</span></span>
+            <audio class="axp-audio" preload="metadata"><source src="assets/mix-void-where-inhibited.m4a" type="audio/mp4"></audio>
+          </div>
+        </div>
+      </div>
+      <div class="mix-card">
+        <div class="mix-info">
+          <b>Stay Away</b>
           <div class="axp">
             <button class="axp-play" type="button" aria-label="Play"></button>
             <input type="range" class="axp-seek" min="0" max="100" value="0" step="0.1" aria-label="Seek">
@@ -944,6 +972,17 @@
             <input type="range" class="axp-seek" min="0" max="100" value="0" step="0.1" aria-label="Seek">
             <span class="axp-time"><span class="axp-cur">0:00</span> / <span class="axp-dur">0:00</span></span>
             <audio class="axp-audio" preload="metadata"><source src="assets/mix-dreamscape.m4a" type="audio/mp4"></audio>
+          </div>
+        </div>
+      </div>
+      <div class="mix-card">
+        <div class="mix-info">
+          <b>Super Shady</b>
+          <div class="axp">
+            <button class="axp-play" type="button" aria-label="Play"></button>
+            <input type="range" class="axp-seek" min="0" max="100" value="0" step="0.1" aria-label="Seek">
+            <span class="axp-time"><span class="axp-cur">0:00</span> / <span class="axp-dur">0:00</span></span>
+            <audio class="axp-audio" preload="metadata"><source src="assets/mix-super-shady.m4a" type="audio/mp4"></audio>
           </div>
         </div>
       </div>
