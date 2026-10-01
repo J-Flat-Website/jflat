@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>J-Flat Sound Labs</title>
 <link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="assets/logo-record.webp" fetchpriority="high">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <meta name="description" content="LA-based mixing &amp; mastering engineer for all genres. Berklee-trained, streaming-ready sound. Hear mixes from Void Where Inhibited — get your next track mixed.">
 <link rel="canonical" href="https://jflatsoundlabs.com">
@@ -342,6 +343,24 @@
   .t5{ transform:rotate(-5deg); margin-top:10px; --pin:#F2A93B; }
   .t6{ transform:rotate(3deg); margin-top:-2px; --pin:#FFD24C; }
   .t7{ transform:rotate(-4deg); margin-top:4px; --pin:#D65A2E; }
+  .testimonial-tile{ cursor:pointer; }
+  .testimonial-play{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:52px; height:52px; border-radius:50%; border:0; cursor:pointer;
+    background:rgba(0,0,0,0.55); z-index:2;
+    transition:background 0.2s ease;
+  }
+  .testimonial-tile:hover .testimonial-play{ background:var(--rust); }
+  .testimonial-play::before{
+    content:''; position:absolute; top:50%; left:58%; transform:translate(-50%,-50%);
+    border-style:solid; border-width:9px 0 9px 15px; border-color:transparent transparent transparent #fff;
+  }
+  .testimonial-tile.is-playing .testimonial-play::before{ display:none; }
+  .testimonial-play::after{
+    content:''; display:none; position:absolute; top:50%; left:50%;
+    width:5px; height:16px; background:#fff; box-shadow:9px 0 0 #fff; transform:translate(-50%,-50%);
+  }
+  .testimonial-tile.is-playing .testimonial-play::after{ display:block; }
   .tile-caption{
     position:absolute; left:0; right:0; bottom:0;
     background:linear-gradient(0deg, rgba(0,0,0,0.88), transparent);
@@ -544,7 +563,9 @@
   .loader-logo-img-wrap{
     position:relative; display:flex; justify-content:center; align-items:center;
     width:min(450px, 88vw); height:min(450px, 88vw); margin-bottom:14px;
+    opacity:0; transition:opacity 0.25s ease;
   }
+  .loader-logo-img-wrap.is-ready{ opacity:1; }
   .loader-record-spin{
     position:absolute; top:0; right:0; bottom:0; left:0;
     animation:loaderSpin 1.4s linear infinite;
@@ -584,6 +605,17 @@
 
 <script>
   document.body.classList.add('loading');
+  (function(){
+    var wrap = document.querySelector('.loader-logo-img-wrap');
+    var img = document.querySelector('.loader-logo-img');
+    function reveal(){ wrap.classList.add('is-ready'); }
+    if (img.complete && img.naturalWidth > 0) {
+      reveal();
+    } else {
+      img.addEventListener('load', reveal);
+      img.addEventListener('error', reveal);
+    }
+  })();
   function hideLoader() {
     const loader = document.getElementById('loader');
     if (!loader || loader.classList.contains('fade-out')) return;
@@ -793,6 +825,27 @@
     } else {
       initAxp();
     }
+  })();
+</script>
+
+<script>
+  (function(){
+    document.querySelectorAll('.testimonial-tile').forEach(function(tile){
+      var audio = tile.querySelector('.testimonial-audio');
+      var btn = tile.querySelector('.testimonial-play');
+      function toggle(){
+        if (audio.paused) {
+          document.querySelectorAll('audio').forEach(function(a){ if (a !== audio) a.pause(); });
+          audio.play();
+        } else {
+          audio.pause();
+        }
+      }
+      btn.addEventListener('click', function(e){ e.preventDefault(); toggle(); });
+      audio.addEventListener('play', function(){ tile.classList.add('is-playing'); });
+      audio.addEventListener('pause', function(){ tile.classList.remove('is-playing'); });
+      audio.addEventListener('ended', function(){ tile.classList.remove('is-playing'); });
+    });
   })();
 </script>
 
@@ -1042,9 +1095,11 @@
       <a class="collage-tile t6" href="https://www.instagram.com/blacksilver.barz/reel/DbefFjUoDXA/" target="_blank" rel="noopener" style="background-image:url(&#39;assets/press-instagram.jpg&#39;); background-position:center 30%;">
         <div class="tile-caption"><span class="press-source">Instagram Reel</span><b>Black Silver Shoutout</b></div>
       </a>
-      <a class="collage-tile t7" href="assets/press-darrylswann-testimonial.m4a" target="_blank" rel="noopener" style="background-image:url('assets/press-darrylswann.jpg');">
+      <div class="collage-tile t7 testimonial-tile" style="background-image:url('assets/press-darrylswann.jpg');">
+        <button class="testimonial-play" type="button" aria-label="Play testimonial"></button>
+        <audio class="testimonial-audio" preload="none"><source src="assets/press-darrylswann-testimonial.m4a" type="audio/mp4"></audio>
         <div class="tile-caption"><span class="press-source">Audio Testimonial</span><b>Darryl Swann Testimonial</b></div>
-      </a>
+      </div>
     </div>
     </div>
   </div>
