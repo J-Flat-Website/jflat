@@ -830,22 +830,29 @@
 
 <script>
   (function(){
-    document.querySelectorAll('.testimonial-tile').forEach(function(tile){
-      var audio = tile.querySelector('.testimonial-audio');
-      var btn = tile.querySelector('.testimonial-play');
-      function toggle(){
-        if (audio.paused) {
-          document.querySelectorAll('audio').forEach(function(a){ if (a !== audio) a.pause(); });
-          audio.play();
-        } else {
-          audio.pause();
+    function initTestimonial(){
+      document.querySelectorAll('.testimonial-tile').forEach(function(tile){
+        var audio = tile.querySelector('.testimonial-audio');
+        var btn = tile.querySelector('.testimonial-play');
+        function toggle(){
+          if (audio.paused) {
+            document.querySelectorAll('audio').forEach(function(a){ if (a !== audio) a.pause(); });
+            audio.play();
+          } else {
+            audio.pause();
+          }
         }
-      }
-      btn.addEventListener('click', function(e){ e.preventDefault(); toggle(); });
-      audio.addEventListener('play', function(){ tile.classList.add('is-playing'); });
-      audio.addEventListener('pause', function(){ tile.classList.remove('is-playing'); });
-      audio.addEventListener('ended', function(){ tile.classList.remove('is-playing'); });
-    });
+        btn.addEventListener('click', function(e){ e.preventDefault(); toggle(); });
+        audio.addEventListener('play', function(){ tile.classList.add('is-playing'); });
+        audio.addEventListener('pause', function(){ tile.classList.remove('is-playing'); });
+        audio.addEventListener('ended', function(){ tile.classList.remove('is-playing'); });
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initTestimonial);
+    } else {
+      initTestimonial();
+    }
   })();
 </script>
 
@@ -1073,7 +1080,7 @@
 
 <section id="press" class="press">
   <div class="inner">
-    <div class="label">Press &amp; Features</div>
+    <div class="label">Press &amp; Testimonials</div>
     <h2 style="margin-bottom:28px;">J-Flat in the write-ups.</h2>
     <div class="corkboard">
     <div class="press-collage">
